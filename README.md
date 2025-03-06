@@ -8,7 +8,7 @@ Create or select an existing key pair.
 Ensure port 80 (HTTP) is open in the security group.
 Click Launch.
 Repeat this process to launch at least two instances.
-
+________________________________________________________________________________________________________________________________________________________________
 Step 2: Install a Web Server on Each EC2 Instance
 Connect to each EC2 instance using SSH:
 sh
@@ -36,7 +36,7 @@ Copy
 Edit
 sudo systemctl restart httpd
 ✅ Now, both EC2 instances serve a webpage.
-
+________________________________________________________________________________________________________________________________________________________________
 Step 3: Create a Network Load Balancer (NLB)
 Go to AWS Console → Open EC2 Dashboard.
 Click Load Balancers → Click Create Load Balancer.
@@ -48,7 +48,7 @@ IP Address Type: IPv4
 VPC & Subnets: Select your existing VPC and at least two subnets.
 Listener: Ensure Protocol: TCP, Port: 80.
 Click Next: Configure Routing.
-
+________________________________________________________________________________________________________________________________________________________________
 Step 4: Create a Target Group
 Choose Target Group Type: Instances.
 Protocol: TCP, Port: 80.
@@ -57,12 +57,12 @@ Name: MyTargetGroup.
 Click Next: Register Targets.
 Select your EC2 instances and click Include as pending.
 Click Create Target Group.
-
+________________________________________________________________________________________________________________________________________________________________
 Step 5: Attach the Target Group to the Load Balancer
 Go back to the Load Balancer setup.
 Select the Target Group (MyTargetGroup).
 Click Create Load Balancer.
-
+________________________________________________________________________________________________________________________________________________________________
 Step 6: Test the Load Balancer
 Go to EC2 Dashboard → Load Balancers.
 Copy the DNS name of your NLB.
@@ -73,3 +73,4 @@ Edit
 http://<NLB-DNS-Name>
 Refresh multiple times to see the requests being distributed across Server 1 and Server 2.
 ✅ Congratulations! Your website is now accessible through a Load Balancer. 🚀
+________________________________________________________________________________________________________________________________________________________________
